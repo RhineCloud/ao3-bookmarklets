@@ -28,34 +28,34 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
 7. and that's the setup all done!
 
 ## alternate way to install (presumably on desktop)
-1. create a new, blank bookmark
-2. give it a snappy name like "ao3 saved filters"
-3. copy [the entire code from this file](https://raw.githubusercontent.com/RhineCloud/ao3-bookmarklets/main/default-filters/ao3-saved-filters-blank.js) and paste it as the bookmark's URL
-4. visit any of AO3's works or bookmarks listing page, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works), for instance
-5. select all the filters that you want to set as saved filters, for example:
+1. **create a new, blank bookmark**
+2. give it a snappy **name** like "ao3 saved filters"
+3. copy [the entire code from this file](https://raw.githubusercontent.com/RhineCloud/ao3-bookmarklets/main/default-filters/ao3-saved-filters-blank.js) and paste it as the **bookmark's URL**
+4. visit any of **AO3's works or bookmarks listing page**, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works), for instance
+5. **select all the filters** that you want to set as saved filters, for example:
     1. to _Sort by_ "Bookmarks",
     2. to _Exclude_ everything with the "Not Rated" _Rating_,
     3. as well as the "Rape/Non-Con", "Underage", and "Creator Chose Not To Use Archive Warnings" _Warnings_, 
     4. "Dead Dove: Do Not Eat" in the _Other tags to exclude_,
     5. and have all the works with "English" as their _Language_
-6. use the _Sort and Filter_ button to apply these filters
-7. copy the URL of the resulting listing from the address bar
-8. paste this URL between the pair of quotation marks `""` that come right after `javascript:(function(){var%20urlWithFilters=` at the beginning of the code in the bookmark's URL field
-9. save the bookmarklet at an easily accessible location, like the bookmarks toolbar or the bookmarks menu
+6. use the _Sort and Filter_ button to **apply these filters**
+7. **copy the URL** of the resulting filtered listing from the address bar
+8. **paste this URL** between the pair of quotation marks `""` that come right after `javascript:(function(){var%20urlWithFilters=` at the beginning of the code in the bookmark's URL field
+9. **save the bookmarklet** at an easily accessible location, like the bookmarks toolbar or the bookmarks menu
 10. done!
 
 ## how to use on mobile
-1. be on any works or bookmarks listing page you want to apply the saved filters to
-2. open the search/address bar
-3. start to enter the name of your saved filters bookmarklet
-4. the browser should be able to find the saved filters bookmark as you enter its name
-5. select that bookmark
+1. be on **any works or bookmarks listing page** you want to apply the saved filters to
+2. open the **search/address bar**
+3. start to enter the **name of your saved filters bookmarklet**
+4. the browser should be able to find the saved filters bookmarklet as you enter its name
+5. **select that bookmarklet**
 6. watch the magic happen :sparkles:
 
 ## how to use on desktop
-1. be on any works or bookmarks listing page you want to apply the saved filters to
-2. locate your saved filters bookmarklet
-3. select said bookmarklet
+1. be on **any works or bookmarks listing page** you want to apply the saved filters to
+2. **locate your saved filters bookmarklet**
+3. **select** said bookmarklet
 4. and there's the magic :sparkles:
 
 ## extra
