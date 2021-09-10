@@ -28,21 +28,25 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
 7. and that's the setup all done!
 
 ## alternate way to install (presumably on desktop)
-1. **create a new, blank bookmark**
-2. give it a snappy **name** like "ao3 saved filters"
-3. copy [the entire code from this file](https://raw.githubusercontent.com/RhineCloud/ao3-bookmarklets/main/default-filters/ao3-saved-filters-blank.js) and paste it as the **bookmark's URL**
-4. visit any of **AO3's works or bookmarks listing page**, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works), for instance
-5. **select all the filters** that you want to set as saved filters, for example:
+1. select [the entire code from this file](https://raw.githubusercontent.com/RhineCloud/ao3-bookmarklets/main/default-filters/ao3-saved-filters-blank.js)
+2. try to **drag it into your bookmarks toolbar** to create a new bookmark
+3. **change the bookmark's name** to something like "ao3 saved filters"
+4. if the above didn't work for you, do this instead:
+    1. **create a new, blank bookmark**
+    2. give it a snappy **name** like "ao3 saved filters"
+    3. copy [the entire code from this file](https://raw.githubusercontent.com/RhineCloud/ao3-bookmarklets/main/default-filters/ao3-saved-filters-blank.js) and paste it as the **bookmark's URL**
+5. visit any of **AO3's works or bookmarks listing page**, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works), for instance
+6. **select all the filters** that you want to set as saved filters, for example:
     - to _Sort by_ "Bookmarks",
     - to _Exclude_ everything with the "Not Rated" _Rating_,
     - as well as the "Rape/Non-Con", "Underage", and "Creator Chose Not To Use Archive Warnings" _Warnings_, 
     - "Dead Dove: Do Not Eat" in the _Other tags to exclude_,
     - and have all the works with "English" as their _Language_
-6. use the _Sort and Filter_ button to **apply these filters**
-7. **copy the URL** of the resulting filtered listing from the address bar
-8. **paste this URL** between the pair of quotation marks `""` that come right after `javascript:(function(){var%20urlWithFilters=` at the beginning of the code in the bookmark's URL field
-9. **save the bookmarklet** at an easily accessible location, like the bookmarks toolbar or the bookmarks menu
-10. done!
+7. use the _Sort and Filter_ button to **apply these filters**
+8. **copy the URL** of the resulting filtered listing from the address bar
+9. **paste this URL** between the pair of quotation marks `""` that come right after `javascript:(function(){var%20urlWithFilters=` at the beginning of the code in the bookmark's URL field
+10. **save the bookmarklet** at an easily accessible location, like the bookmarks toolbar or the bookmarks menu
+11. done!
 
 ## how to use on mobile
 1. be on **any works or bookmarks listing page** you want to apply the saved filters to
