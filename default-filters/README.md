@@ -56,3 +56,6 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
 2. locate your saved filters bookmarklet
 3. select said bookmarklet
 4. and there's the magic :sparkles:
+
+## extra
+if you're curious about what the code does, there's a [readable version with comments](https://github.com/RhineCloud/ao3-bookmarklets/blob/main/default-filters/ao3-saved-filters-readable.js) that you're welcome to check out
