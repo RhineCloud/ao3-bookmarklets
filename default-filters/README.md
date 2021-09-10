@@ -55,4 +55,4 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
 1. be on any works or bookmarks listing page you want to apply the saved filters to
 2. locate your saved filters bookmarklet
 3. select said bookmarklet
-4. and there's tha magic :sparkles:
+4. and there's the magic :sparkles:
