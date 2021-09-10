@@ -5,20 +5,20 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
 1. visit any of AO3's works or bookmarks listing page, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works), for instance
 2. if you're using a narrow screen, such as vertical/portrait mode on mobile devices, select the _Filters_ button to summon the filters bar
 3. select all the filters that you want to set as saved filters, for example:
-    1. to _Sort by_ "Bookmarks",
-    2. to _Exclude_ everything with the "Not Rated" _Rating_,
-    3. as well as the "Rape/Non-Con", "Underage", and "Creator Chose Not To Use Archive Warnings" _Warnings_, 
-    4. "Dead Dove: Do Not Eat" in the _Other tags to exclude_,
-    5. and have all the works with "English" as their _Language_
+    - to _Sort by_ "Bookmarks",
+    - to _Exclude_ everything with the "Not Rated" _Rating_,
+    - as well as the "Rape/Non-Con", "Underage", and "Creator Chose Not To Use Archive Warnings" _Warnings_, 
+    - "Dead Dove: Do Not Eat" in the _Other tags to exclude_,
+    - and have all the works with "English" as their _Language_
 4. use the _Sort and Filter_ button to apply these filters
 5. **add a browser bookmark** to the resulting works or bookmarks listing page; different browsers do this differently, one of these should do the job:
-    1. most browsers have a :star: for this right next to the address bar at the top (or in some browser setups the bottom) of the screen (the address bar shows which page you're on, and when selected on the filtered page should appear as a long line of text, starting with something like "https://archiveofourown.org/..."
-    2. some browsers have the :star: (sometimes with a :heavy_plus_sign:) hidden in the meatballs menu (the one with the three dots) next to the address bar
-    3. some browsers have the option to save a link/target as a bookmark in the menu that shows up when holding or right-clicking a link; you can use this option on one of the buttons leading to a different page of this filtered listing at the top and the bottom of the page and save that as a bookmark
+    - most browsers have a :star: for this right next to the address bar at the top (or in some browser setups the bottom) of the screen (the address bar shows which page you're on, and when selected on the filtered page should appear as a long line of text, starting with something like "https://archiveofourown.org/..."
+    - some browsers have the :star: (sometimes with a :heavy_plus_sign:) hidden in the meatballs menu (the one with the three dots) next to the address bar
+    - some browsers have the option to save a link/target as a bookmark in the menu that shows up when holding or right-clicking a link; you can use this option on one of the buttons leading to a different page of this filtered listing at the top and the bottom of the page and save that as a bookmark
 6. open the form to **edit this new browser bookmark**; depending on your browser one of these should work:
-    1. some browsers allow you to do so by seleting the :star: again
-    2. some browsers offer the option to edit a bookmark immediately after it has been created
-    3. in the screen that lists all of the browser's saved bookmarks, locate the newly created bookmark, and a menu that appears after holding or right-clicking or selecting the meatballs (three dots) next to that bookmark may offer the option to edit that bookmark
+    - some browsers allow you to do so by seleting the :star: again
+    - some browsers offer the option to edit a bookmark immediately after it has been created
+    - in the screen that lists all of the browser's saved bookmarks, locate the newly created bookmark, and a menu that appears after holding or right-clicking or selecting the meatballs (three dots) next to that bookmark may offer the option to edit that bookmark
 7. make the following edits and save the changes:
     1. **change the name of the browser bookmark** to something that makes the purpose of this bookmark clear, like "ao3 saved filters"
     2. copy the following bit of code and paste it **at the very beginning of the bookmark URL**, before the "https://archiveofourown.org/...": `javascript:(function(){var%20urlWithFilters="`
@@ -33,11 +33,11 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
 3. copy [the entire code from this file](https://raw.githubusercontent.com/RhineCloud/ao3-bookmarklets/main/default-filters/ao3-saved-filters-blank.js) and paste it as the **bookmark's URL**
 4. visit any of **AO3's works or bookmarks listing page**, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works), for instance
 5. **select all the filters** that you want to set as saved filters, for example:
-    1. to _Sort by_ "Bookmarks",
-    2. to _Exclude_ everything with the "Not Rated" _Rating_,
-    3. as well as the "Rape/Non-Con", "Underage", and "Creator Chose Not To Use Archive Warnings" _Warnings_, 
-    4. "Dead Dove: Do Not Eat" in the _Other tags to exclude_,
-    5. and have all the works with "English" as their _Language_
+    - to _Sort by_ "Bookmarks",
+    - to _Exclude_ everything with the "Not Rated" _Rating_,
+    - as well as the "Rape/Non-Con", "Underage", and "Creator Chose Not To Use Archive Warnings" _Warnings_, 
+    - "Dead Dove: Do Not Eat" in the _Other tags to exclude_,
+    - and have all the works with "English" as their _Language_
 6. use the _Sort and Filter_ button to **apply these filters**
 7. **copy the URL** of the resulting filtered listing from the address bar
 8. **paste this URL** between the pair of quotation marks `""` that come right after `javascript:(function(){var%20urlWithFilters=` at the beginning of the code in the bookmark's URL field
