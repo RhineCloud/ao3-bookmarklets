@@ -10,14 +10,14 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
     4. "Dead Dove: Do Not Eat" in the _Other tags to exclude_,
     5. and have all the works with "English" as their _Language_
 3. use the _Sort and Filter_ button to apply these filters
-4. **add a browser bookmark** to the resulting works or bookmarks listing page
+4. **add a browser bookmark** to the resulting works or bookmarks listing page; different browsers do this differently, one of these should do the job:
     1. most browsers have a :star: for this right next to the address bar that has a long line of text starting with something like "https://archiveofourown.org/..."
-    2. some browsers have the :star: (sometimes with a :heavy_plus_sign:) hidden in the meatballs menu next to the address bar
+    2. some browsers have the :star: (sometimes with a :heavy_plus_sign:) hidden in the meatballs menu (the one with the three dots) next to the address bar
     3. some browsers have the option to save a link/target as a bookmark in the menu that shows up when holding or right-clicking the button for another page of this particular works or bookmarks listing
-5. open the form to **edit this new browser bookmark**
+5. open the form to **edit this new browser bookmark**; depending on your browser one of these should work:
     1. some browsers allow you to do so by seleting the :star: again
     2. some browsers offer the option to edit a bookmark immediately after it has been created
-    3. after locating the newly created bookmark in the listing with all the bookmarks saved on this browser, a menu that appears after holding or right-clicking or selecting the meatballs next to that bookmark may offer the option to edit that bookmark
+    3. after locating the newly created bookmark in the listing with all the bookmarks saved on this browser, a menu that appears after holding or right-clicking or selecting the meatballs (three dots) next to that bookmark may offer the option to edit that bookmark
 6. make the following edits and save the changes:
     1. **change the name of the browser bookmark** to something that makes the purpose of this bookmark clear, like "ao3 saved filters"
     2. copy the following bit of code and paste it **at the very beginning of the bookmark URL**, before the "https://archiveofourown.org/...": `javascript:(function(){var%20urlWithFilters="`
