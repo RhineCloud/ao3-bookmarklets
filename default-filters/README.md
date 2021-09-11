@@ -23,7 +23,7 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
     1. **change the name of the browser bookmark** to something that makes the purpose of this bookmark clear, like "ao3 saved filters"
     2. copy the following bit of code and paste it **at the very beginning of the bookmark URL**, before the "https://archiveofourown.org/...": `javascript:(function(){var%20urlWithFilters="`
         1. to select the code on a mobile device, hold some part of the `code` until it marks/selects (part of) the snippet
-        2. carefully move the beginning and end points to encompass the entire string that's formatted as `code`, but no more than the `code`
+        2. carefully move the beginning and end points to encompass the entire string that's formatted as `code`(including the quotation mark `"` or the semicolon `;` at the beginning/end), but no more than the `code`
         3. select _Copy_ in the menu that appears
         4. in the bookmark editing form, hold at the spot you want to insert the `code` into
         5. select _Paste_ in the menu that appears
