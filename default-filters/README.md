@@ -2,7 +2,7 @@
 this bookmarklet aims to make it easier to apply a pre-defined/saved set of filters to any works or bookmarks listing page on ao3, in a way that works both on mobile and desktop
 
 ## how to install
-1. visit any of AO3's works or bookmarks listing page, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works), for instance
+1. visit any of AO3's works or bookmarks listing page, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works) or [the works listing page of Yuletide 2020](https://archiveofourown.org/collections/yuletide2020/works), for instance
 2. if you're using a narrow screen, such as vertical/portrait mode on mobile devices, select the _Filters_ button to summon the filters bar
 3. select all the filters that you want to set as saved filters, for example:
     - to _Sort by_ "Bookmarks",
@@ -39,7 +39,7 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
     1. **create a new, blank bookmark**
     2. give it a snappy **name** like "ao3 saved filters"
     3. copy [the entire code from this file](https://raw.githubusercontent.com/RhineCloud/ao3-bookmarklets/main/default-filters/ao3-saved-filters-blank.js) and paste it as the **bookmark's URL**
-5. visit any of **AO3's works or bookmarks listing page**, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works), for instance
+5. visit any of **AO3's works or bookmarks listing page**, like [the DCU works listing page](https://archiveofourown.org/tags/DCU/works) or [the works listing page of Yuletide 2020](https://archiveofourown.org/collections/yuletide2020/works), for instance
 6. **select all the filters** that you want to set as saved filters, for example:
     - to _Sort by_ "Bookmarks",
     - to _Exclude_ everything with the "Not Rated" _Rating_,
