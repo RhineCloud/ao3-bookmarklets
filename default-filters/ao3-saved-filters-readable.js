@@ -116,18 +116,22 @@ javascript: (function() {
         /* Finally, go to the listing with all the saved filters applied on top */
         window.location = filteredUrl;
       } else if (currentUrl.includes("/tags/")) {
+        /* What to do on unfiltered listings of a tag */
         window.location = "https://archiveofourown.org/" + currentUrl.split("/").splice(5, 1) + "?" +
           filters + "&tag_id=" + currentUrl.split("/").splice(4, 1);
       } else if (currentUrl.includes("/users/")) {
         if (currentUrl.includes("/pseuds/")) {
+          /* What to do on unfiltered listings of a user's pseud */
           window.location = "https://archiveofourown.org/" + currentUrl.split("/").splice(7, 1) + "?" +
             filters + "&user_id=" + currentUrl.split("/").splice(4, 1) +
             "&pseud_id=" + currentUrl.split("/").splice(6, 1);
         } else {
+          /* still a user's listing, but no pseud */
           window.location = "https://archiveofourown.org/" + currentUrl.split("/").splice(5, 1) + "?" +
             filters + "&user_id=" + currentUrl.split("/").splice(4, 1);
         }
       } else if (currentUrl.includes("/collections/")) {
+        /* how to deal with listings in collections */
         window.location = currentUrl + "?" + filters;
       }
     }
