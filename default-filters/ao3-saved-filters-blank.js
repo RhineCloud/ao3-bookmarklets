@@ -1,1 +1,48 @@
-javascript:(function(){var%20urlWithFilters="";if(urlWithFilters){urlWithFilters=urlWithFilters.replace(/\u00255B/g,"[");urlWithFilters=urlWithFilters.replace(/\u00255D/g,"]");var%20filters=urlWithFilters.trim().slice(urlWithFilters.indexOf("?")+1);if(filters.lastIndexOf("&")==filters.lastIndexOf("&",filters.indexOf("_id="))){filters=filters.slice(0,filters.lastIndexOf("&"));}else{filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("_id=")),filters.indexOf("&",filters.indexOf("_id="))),"");}filters=filters.replace(filters.slice(filters.indexOf("&page="),filters.indexOf("&",filters.indexOf("page="))),"");var%20currentUrl=new%20String(window.location);currentUrl=currentUrl.replace(/\u00255B/g,"[");currentUrl=currentUrl.replace(/\u00255D/g,"]");if(currentUrl.includes("/works")){if(filters.includes("[sort_column]=bookmarkable_date")){filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[sort_column]=")),filters.indexOf("&",filters.indexOf("[sort_column]="))),"");}filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[other_bookmark_tag_names]=")),filters.indexOf("&",filters.indexOf("[other_bookmark_tag_names]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[excluded_bookmark_tag_names]=")),filters.indexOf("&",filters.indexOf("[excluded_bookmark_tag_names]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[bookmark_query]=")),filters.indexOf("&",filters.indexOf("[bookmark_query]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[rec]=")),filters.indexOf("&",filters.indexOf("[rec]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[with_notes]=")),filters.indexOf("&",filters.indexOf("[with_notes]="))),"");filters=filters.replace(/\u0026bookmark/g,"&work");filters=filters.replace(/\u0026include\u005Fbookmark/g,"&include_work");filters=filters.replace(/\u0026exclude\u005Fbookmark/g,"&exclude_work");}else%20if(currentUrl.includes("/bookmarks")){if(!(filters.includes("[sort_column]=created_at")||filters.includes("[sort_column]=bookmarkable_date"))){filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[sort_column]=")),filters.indexOf("&",filters.indexOf("[sort_column]="))),"");}filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[crossover]=")),filters.indexOf("&",filters.indexOf("[crossover]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[complete]=")),filters.indexOf("&",filters.indexOf("[complete]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[words_from]=")),filters.indexOf("&",filters.indexOf("[words_from]"))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[words_to]=")),filters.indexOf("&",filters.indexOf("[words_to]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[date_from]=")),filters.indexOf("&",filters.indexOf("[date_from]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[date_to]=")),filters.indexOf("&",filters.indexOf("[date_to]="))),"");filters=filters.replace(/\u0026work/g,"&bookmark");filters=filters.replace(/\u0026include\u005Fwork/g,"&include_bookmark");filters=filters.replace(/\u0026exclude\u005Fwork/g,"&exclude_bookmark");}else{filters="";}if(filters){if(currentUrl.includes("tag_id=")||currentUrl.includes("user_id=")||currentUrl.includes("collection_id=")){var%20settings=filters.split("&");var%20filteredUrl=currentUrl;for(let%20selected%20of%20settings){if(!selected.endsWith("=")){var%20category=selected.slice(0,selected.indexOf("=")+1);if(!filteredUrl.includes(selected)){if(filteredUrl.includes(category+"&")||category.includes("sort_column")){filteredUrl=filteredUrl.replace(filteredUrl.slice(filteredUrl.indexOf(category),filteredUrl.indexOf("&",filteredUrl.indexOf(category))),selected);}else%20if(category.includes("_tag_names")){filteredUrl=filteredUrl.replace(category,selected+"%2C");}else%20if(category.includes("query")){filteredUrl=filteredUrl.replace(category,selected+"+");}else%20if(category!="utf8="&&category!="commit="&&!(category.startsWith("include_")&&category.includes("rating_ids"))&&!category.includes("language_id")){filteredUrl=filteredUrl+"&"+selected;}}}}window.location=filteredUrl;}else%20if(currentUrl.includes("/tags/")){window.location="https://archiveofourown.org/"+currentUrl.split("/").splice(5,1)+"?"+filters+"&tag_id="+currentUrl.split("/").splice(4,1);}else%20if(currentUrl.includes("/users/")){if(currentUrl.includes("/pseuds/")){window.location="https://archiveofourown.org/"+currentUrl.split("/").splice(7,1)+"?"+filters+"&user_id="+currentUrl.split("/").splice(4,1)+"&pseud_id="+currentUrl.split("/").splice(6,1);}else{window.location="https://archiveofourown.org/"+currentUrl.split("/").splice(5,1)+"?"+filters+"&user_id="+currentUrl.split("/").splice(4,1);}}else%20if(currentUrl.includes("/collections/")){window.location=currentUrl+"?"+filters;}}}})();
+javascript:(function() {
+    const urlWithFilters = "https://archiveofourown.org/bookmarks?utf8=%E2%9C%93&bookmark_search%5Bsort_column%5D=created_at&include_bookmark_search%5Brating_ids%5D%5B%5D=11&include_bookmark_search%5Bcharacter_ids%5D%5B%5D=2332&bookmark_search%5Bother_tag_names%5D=Batman+-+All+Media+Types&bookmark_search%5Bother_bookmark_tag_names%5D=&exclude_bookmark_search%5Barchive_warning_ids%5D%5B%5D=14&bookmark_search%5Bexcluded_tag_names%5D=Superman+-+All+Media+Types&bookmark_search%5Bexcluded_bookmark_tag_names%5D=&bookmark_search%5Bbookmarkable_query%5D=-reader&bookmark_search%5Bbookmark_query%5D=&bookmark_search%5Blanguage_id%5D=&bookmark_search%5Brec%5D=0&bookmark_search%5Brec%5D=1&bookmark_search%5Bwith_notes%5D=0&commit=Sort+and+Filter&tag_id=DCU";
+    if (urlWithFilters) {
+        const filterParams = new URL(urlWithFilters).searchParams;
+        const path = window.location.pathname;
+        var pageType;
+        if (path.includes("/works")) {
+            pageType = "work";
+        } else if (path.includes("/bookmarks")) {
+            pageType = "bookmark";
+        }
+        if (filterParams && pageType) {
+            const newFilters = new URLSearchParams(window.location.search);
+            for (const [key, value] of filterParams) {
+                if (!key.endsWith("_id") && value) {
+                    let newKey = key;
+                    if (!key.includes(pageType + "_search") &&
+                    !(key.includes("crossover") || key.includes("complete") || key.includes("words_") || key.includes("date_") ||
+                    key.includes("bookmark_tag") || key.includes("bookmark_query") || key.includes("rec") || key.includes("with_notes") ||
+                    (key.includes("sort_column") && value != "created_at"))) {
+                        newKey = key.replace(/(work_search|bookmark_search)/, pageType + "_search");
+                        newKey = key.includes("bookmarkable_query") ? newKey.replace("bookmarkable_query", "query") : newKey.replace("query", "bookmarkable_query");
+                    }
+                    if (!newFilters.getAll(newKey).includes(value) && newKey.includes(pageType + "_search")) {
+                        if (newFilters.get(newKey) == null || newFilters.get(newKey) == "" ||
+                        ((key.includes("rec") || key.includes("with_notes")) && newFilters.get(key) == 0) ||
+                        (key.includes("sort_column") && (newFilters.get(newKey) == "revised_at" || newFilters.get(newKey) == "bookmarkable_date"))) {
+                            newFilters.set(newKey, value);
+                            console.log("set " + newKey + " as " + value);
+                        } else if (!(newKey.startsWith(pageType) || (key.startsWith("include_") && key.includes("rating_ids")))) {
+                            newFilters.append(newKey, value);
+                            console.log("append " + newKey + " with " + value);
+                        } else if (key.includes("_tag_names")) {
+                            newFilters.set(newKey, newFilters.get(newKey) + "," + value);
+                            console.log("set " + newKey + " as " + newFilters.get(newKey));
+                        } else if (key.includes("query")) {
+                            newFilters.set(newKey, newFilters.get(newKey) + " " + value);
+                            console.log("set " + newKey + " as " + newFilters.get(newKey));
+                        }
+                    }
+                }
+            }
+            if (newFilters) {
+                window.location.search = newFilters.toString();
+            }
+        }
+    }
+})();
