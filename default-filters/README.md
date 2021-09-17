@@ -21,13 +21,13 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
     - in the screen that lists all of the browser's saved bookmarks, locate the newly created bookmark, and a menu that appears after holding or right-clicking or selecting the meatballs (three dots) next to that bookmark may offer the option to edit that bookmark
 7. make the following edits and save the changes:
     1. **change the name of the browser bookmark** to something that makes the purpose of this bookmark clear, like "ao3 saved filters"
-    2. copy the following bit of code and paste it **at the very beginning of the bookmark URL**, before the "https://archiveofourown.org/...": `javascript:(function(){var%20urlWithFilters="`
+    2. copy the following bit of code and paste it **at the very beginning of the bookmark URL**, before the "https://archiveofourown.org/...": `javascript:(function(){const%20urlWithFilters="`
         1. to select the code on a mobile device, hold some part of the `code` until it marks/selects (part of) the snippet
         2. carefully move the beginning and end points to encompass the entire string that's formatted as `code`(including the quotation mark `"` or the semicolon `;` at the beginning/end), but no more than the `code`
         3. select _Copy_ in the menu that appears
         4. in the bookmark editing form, hold at the spot you want to insert the `code` into
         5. select _Paste_ in the menu that appears
-    3. copy this string of code and paste it **at the very end of the bookmark URL**, there should be nothing that follows afterwards: `";if(urlWithFilters){urlWithFilters=urlWithFilters.replace(/\u00255B/g,"[");urlWithFilters=urlWithFilters.replace(/\u00255D/g,"]");var%20filters=urlWithFilters.trim().slice(urlWithFilters.indexOf("?")+1);if(filters.lastIndexOf("&")==filters.lastIndexOf("&",filters.indexOf("_id="))){filters=filters.slice(0,filters.lastIndexOf("&"));}else{filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("_id=")),filters.indexOf("&",filters.indexOf("_id="))),"");}filters=filters.replace(filters.slice(filters.indexOf("&page="),filters.indexOf("&",filters.indexOf("page="))),"");var%20currentUrl=new%20String(window.location);currentUrl=currentUrl.replace(/\u00255B/g,"[");currentUrl=currentUrl.replace(/\u00255D/g,"]");if(currentUrl.includes("/works")){if(filters.includes("[sort_column]=bookmarkable_date")){filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[sort_column]=")),filters.indexOf("&", filters.indexOf("[sort_column]="))),"");}filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[other_bookmark_tag_names]=")),filters.indexOf("&",filters.indexOf("[other_bookmark_tag_names]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[excluded_bookmark_tag_names]=")),filters.indexOf("&",filters.indexOf("[excluded_bookmark_tag_names]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[bookmark_query]=")),filters.indexOf("&",filters.indexOf("[bookmark_query]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[rec]=")),filters.indexOf("&",filters.indexOf("[rec]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[with_notes]=")),filters.indexOf("&",filters.indexOf("[with_notes]="))),"");filters=filters.replace(/\u0026bookmark/g, "&work");filters=filters.replace(/\u0026include\u005Fbookmark/g,"&include_work");filters=filters.replace(/\u0026exclude\u005Fbookmark/g,"&exclude_work");}else%20if(currentUrl.includes("/bookmarks")){if(!(filters.includes("[sort_column]=created_at")||filters.includes("[sort_column]=bookmarkable_date"))){filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[sort_column]=")),filters.indexOf("&",filters.indexOf("[sort_column]="))),"");}filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[crossover]=")),filters.indexOf("&",filters.indexOf("[crossover]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[complete]=")),filters.indexOf("&",filters.indexOf("[complete]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[words_from]=")),filters.indexOf("&",filters.indexOf("[words_from]"))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[words_to]=")),filters.indexOf("&",filters.indexOf("[words_to]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[date_from]=")),filters.indexOf("&",filters.indexOf("[date_from]="))),"");filters=filters.replace(filters.slice(filters.lastIndexOf("&",filters.indexOf("[date_to]=")),filters.indexOf("&",filters.indexOf("[date_to]="))),"");filters=filters.replace(/\u0026work/g,"&bookmark");filters=filters.replace(/\u0026include\u005Fwork/g,"&include_bookmark");filters=filters.replace(/\u0026exclude\u005Fwork/g,"&exclude_bookmark");}else{filters="";}if(filters){if(currentUrl.includes("tag_id=")||currentUrl.includes("user_id=")||currentUrl.includes("collection_id=")){var%20settings=filters.split("&");var%20filteredUrl=currentUrl;for(let%20selected%20of%20settings){if(!selected.endsWith("=")){var%20category=selected.slice(0,selected.indexOf("=")+1);if(!filteredUrl.includes(selected)){if(filteredUrl.includes(category+"&")||category.includes("sort_column")){filteredUrl=filteredUrl.replace(filteredUrl.slice(filteredUrl.indexOf(category),filteredUrl.indexOf("&",filteredUrl.indexOf(category))),selected);}else%20if(category.includes("_tag_names")){filteredUrl=filteredUrl.replace(category,selected+"%2C");}else%20if(category.includes("query")){filteredUrl=filteredUrl.replace(category,selected+"+");}else%20if(category!="utf8="&&category!="commit="&&!(category.startsWith("include_")&&category.includes("rating_ids"))&&!category.includes("language_id")){filteredUrl=filteredUrl+"&"+selected;}}}}window.location=filteredUrl;}else%20if(currentUrl.includes("/tags/")){window.location="https://archiveofourown.org/"+currentUrl.split("/").splice(5,1)+"?"+filters+"&tag_id="+currentUrl.split("/").splice(4,1);}else%20if(currentUrl.includes("/users/")){if(currentUrl.includes("/pseuds/")){window.location="https://archiveofourown.org/"+currentUrl.split("/").splice(7,1)+"?"+filters+"&user_id="+currentUrl.split("/").splice(4,1)+"&pseud_id="+currentUrl.split("/").splice(6,1);}else{window.location="https://archiveofourown.org/"+currentUrl.split("/").splice(5,1)+"?"+filters+"&user_id="+currentUrl.split("/").splice(4,1);}}else%20if(currentUrl.includes("/collections/")){window.location=currentUrl+"?"+filters;}}}})();`
+    3. copy this string of code and paste it **at the very end of the bookmark URL**, there should be nothing that follows afterwards: `";if(urlWithFilters){const%20filterParams=new%20URL(urlWithFilters).searchParams;const%20page=window.location.pathname.slice(0,-1).split("/").pop().replace("s","");if(window.location.hostname=="archiveofourown.org"&&(page=="work"||page=="bookmark")){const filters=new%20URLSearchParams(window.location.search);for(let[key,value]of%20filterParams){if(value.length){if(!key.includes(page)&&(key.includes("clude_")||key.includes("lang")||(key.includes("sort_")&&(value=="revised_at"||value=="bookmarkable_date"))||(key.includes("_tag")&&!key.includes("mark_tag"))||(key.includes("query")&&!key.includes("mark_query")))){key=key.replace(/(work_search|bookmark_search)/,page+"_search");key=key.includes("bookmarkable_query")?key.replace("bookmarkable_",""):key.replace("query","bookmarkable_query");value=value=="revised_at"?"bookmarkable_date":value.replace("bookmarkable_date","revised_at");}if(!filters.getAll(key).includes(value)&&key.includes(page+"_search")){if(filters.get(key)==null||filters.get(key)==""||((key.includes("rec")||key.includes("_notes"))&&filters.get(key)==0)||(key.includes("sort_")&&(filters.get(key)=="revised_at"||(key.includes("mark_")&&filters.get(key)=="created_at")))){filters.set(key,value);}else%20if(!(key.startsWith(page)||(key.startsWith("include_")&&key.includes("rating_ids")))){filters.append(key,value);}else%20if(key.includes("_tag_names")){filters.set(key,filters.get(key)+","+value);}else%20if(key.includes("query")){filters.set(key,filters.get(key)+"%20"+value);}}}}if("?"+filters-toString()!=window.location.search){window.location.search=filters.toString();}}}})();`
     4. for ease of access on desktop browsers, the bookmarklet should be placed in the _bookmarks toolbar_ if it's enabled in the browser, or otherwise directly in the _bookmarks menu_
 7. and that's the setup all done!
 
@@ -48,7 +48,7 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
     - and have all the works with "English" as their _Language_
 7. use the _Sort and Filter_ button to **apply these filters**
 8. **copy the URL** of the resulting filtered listing from the address bar
-9. **paste this URL** between the pair of quotation marks `""` that come right after `javascript:(function(){var%20urlWithFilters=` at the beginning of the code in the bookmark's URL field
+9. **paste this URL** between the pair of quotation marks `""` that come right after `javascript:(function(){const%20urlWithFilters=` at the beginning of the code in the bookmark's URL field
 10. **save the bookmarklet** at an easily accessible location, like the bookmarks toolbar or the bookmarks menu
 11. done!
 
@@ -66,5 +66,38 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
 3. **select** said bookmarklet
 4. and there's the magic :sparkles:
 
-## extra
+## more code stuff
 if you're curious about what the code does, there's [a more readable version with comments giving short explanations on what different parts of the code do](https://github.com/RhineCloud/ao3-bookmarklets/blob/main/default-filters/ao3-saved-filters-readable.js) that you're welcome to check out
+
+## all the filters on ao3
+I was taking notes on all the fields that exist to be set as filters to work out some of the logic stuff, and as I'd like to keep them if I ever need to go through the code again, I figured might as well tack them on here (instead of inside the readable code version)
+- `filter_name`: optional extra notes on said filter
+
+- in both `work_search` and `bookmark_search`:
+    - `include_`/`exclude_`: tags use their numeric id and not their name
+        - `rating_ids`: the `include_` filter can only be set to one singular value
+        - `warning_ids`
+        - `category_ids`
+        - `fandom_ids`
+        - `character_ids`
+        - `relationship_ids`
+        - `freeform_ids`
+    - others:
+        - `sort_column`: (lolsob)
+            - `work_search` values: **revised_at** (recently updated works first, default), authors_/title_to_sort_on (author/title name), created_at (oldest published first), word_/kudos_/comments_/bookmarks_count (most words/kudos/comments/bookmarks first), hits (most hits first)
+            - `bookmark_search` values: **created_at** (recently created bookmarks first, default), bookmarkable_date (recently updated _works_ first)
+        - `other_`/`excluded_`(`bookmarkable_`)`tag_names`: aka other (work) tags to include/exclude field; tags get separated with a comma ","
+        - (`bookmarkable_`)`query`: aka search within results field; in this version tacked on with a space " " (or the "%20" in the actual bookmarklet, almost at the end of the code) ergo as an AND search; can probably be changed to two pipes "||" for an OR search? (not tested though)
+        - `language_id`
+- `work_search` only (aka more options):
+    - `crossover`/`complete`
+    - `words_from`/`_to`
+    - `date_from`/`_to`
+- `bookmark_search` only (bookmarker's tags/notes stuff):
+    - `other_`/`excluded_bookmark_tag_names`
+    - `bookmark_query`
+    - `rec`/`with_notes`: 0 as the default value instead of empty/null
+- other things in the search parameters of the url of a filtered page:
+    - `utf8`
+    - `commit`
+    - `tag_`/`user_`/`pseud_`/`collection_id`
