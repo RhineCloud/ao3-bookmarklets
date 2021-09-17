@@ -25,8 +25,8 @@ javascript: (function() {
          *  (the same filters use different terms in works and bookmarks)
          */
         if (value.length) {
-          if (!key.includes(page) && (key.includes("clude_") || 
-          key.includes("sort_") || key.includes("lang") ||
+          if (!key.includes(page) && (key.includes("clude_") || key.includes("lang") ||
+          (key.includes("sort_") && (value == "revised_at" || value == "bookmarkable_date"))
           (key.includes("_tag") && !key.includes("mark_tag")) ||
           (key.includes("query") && !key.includes("mark_query")))) {
             key = key.replace(/(work_search|bookmark_search)/, page + "_search");
