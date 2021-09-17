@@ -1,138 +1,72 @@
 javascript: (function() {
-  /* Sample settings from a filtered DCU works listing page
-  (Sort by: Bookmarks;
-  Exclude Ratings: Not Rated;
-  Exclude Warnings: Creator Chose Not To Use Archive Warnings, Rape/Non-Con, Underage;
-  Other tags to exclude: Dead Dove: Do Not Eat;
-  Language: English) */
-  var urlWithFilters = "https://archiveofourown.org/works?utf8=%E2%9C%93&work_search%5Bsort_column%5D=bookmarks_count&work_search%5Bother_tag_names%5D=&exclude_work_search%5Brating_ids%5D%5B%5D=9&exclude_work_search%5Barchive_warning_ids%5D%5B%5D=14&exclude_work_search%5Barchive_warning_ids%5D%5B%5D=19&exclude_work_search%5Barchive_warning_ids%5D%5B%5D=20&work_search%5Bexcluded_tag_names%5D=Dead+Dove%3A+Do+Not+Eat&work_search%5Bcrossover%5D=&work_search%5Bcomplete%5D=&work_search%5Bwords_from%5D=&work_search%5Bwords_to%5D=&work_search%5Bdate_from%5D=&work_search%5Bdate_to%5D=&work_search%5Bquery%5D=&work_search%5Blanguage_id%5D=en&commit=Sort+and+Filter&tag_id=DCU";
-  /* Check if filters to be saved were actually set above */
+  /** Sample settings from the DCU works listing page
+   *   Exclude Ratings: General Audiences, Teen And Up Audiences
+   *   Exclude Warnings: No Archive Warnings Apply
+   *   Exclude Additional Tags: Kid Fic
+   *   Other tags to exclude: Age Regression/De-Aging
+   *   Language: English
+   */
+  const urlWithFilters = "https://archiveofourown.org/tags/DCU/works?work_search%5Bsort_column%5D=created_at&include_work_search%5Btag_ids%5D%5B%5D=747397&exclude_work_search%5Brating_ids%5D%5B%5D=10&exclude_work_search%5Brating_ids%5D%5B%5D=11&exclude_work_search%5Barchive_warning_ids%5D%5B%5D=16&exclude_work_search%5Bfreeform_ids%5D%5B%5D=7193&work_search%5Bexcluded_tag_names%5D=Age+Regression%2FDe-Aging&work_search%5Blanguage_id%5D=en";
   if (urlWithFilters) {
-    /* Turn hexcodes in the URL for saved filters into characters */
-    urlWithFilters = urlWithFilters.replace(/\u00255B/g, "[");
-    urlWithFilters = urlWithFilters.replace(/\u00255D/g, "]");
-    /* Copy the part of the URL with the actual filter settings */
-    var filters = urlWithFilters.trim().slice(urlWithFilters.indexOf("?") + 1);
-    /* Remove extra bits */
-    if (filters.lastIndexOf("&") == filters.lastIndexOf("&", filters.indexOf("_id="))) {
-      filters = filters.slice(0, filters.lastIndexOf("&"));
-    } else {
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("_id=")),
-                                              filters.indexOf("&", filters.indexOf("_id="))), "");
-    }
-    filters = filters.replace(filters.slice(filters.indexOf("&page="),
-                                            filters.indexOf("&", filters.indexOf("page="))), "");
-    /* Copy the URL of the page the bookmarklet is being used on */
-    var currentUrl = new String(window.location);
-    /* Turn hexcode in the current URL into actual characters */
-    currentUrl = currentUrl.replace(/\u00255B/g, "[");
-    currentUrl = currentUrl.replace(/\u00255D/g, "]");
-    /* Turn the saved filters into usable works filter settings if on a works listing page */
-    if (currentUrl.includes("/works")) {
-      if (filters.includes("[sort_column]=bookmarkable_date")) {
-        filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[sort_column]=")),
-                                                filters.indexOf("&", filters.indexOf("[sort_column]="))), "");
-      }
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[other_bookmark_tag_names]=")),
-                                              filters.indexOf("&", filters.indexOf("[other_bookmark_tag_names]="))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[excluded_bookmark_tag_names]=")),
-                                              filters.indexOf("&", filters.indexOf("[excluded_bookmark_tag_names]="))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[bookmark_query]=")),
-                                              filters.indexOf("&", filters.indexOf("[bookmark_query]="))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[rec]=")),
-                                              filters.indexOf("&", filters.indexOf("[rec]="))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[with_notes]=")),
-                                              filters.indexOf("&", filters.indexOf("[with_notes]="))), "");
-      filters = filters.replace(/\u0026bookmark/g, "&work");
-      filters = filters.replace(/\u0026include\u005Fbookmark/g, "&include_work");
-      filters = filters.replace(/\u0026exclude\u005Fbookmark/g, "&exclude_work");
-    /* Turn the saved filters into usable bookmarks filter settings if on a bookmarks listing page */
-    } else if (currentUrl.includes("/bookmarks")) {
-      if (!(filters.includes("[sort_column]=created_at") ||
-            filters.includes("[sort_column]=bookmarkable_date"))) {
-        filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[sort_column]=")),
-                                                filters.indexOf("&", filters.indexOf("[sort_column]="))), "");
-      }
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[crossover]=")),
-                                              filters.indexOf("&", filters.indexOf("[crossover]="))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[complete]=")),
-                                              filters.indexOf("&", filters.indexOf("[complete]="))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[words_from]=")),
-                                              filters.indexOf("&", filters.indexOf("[words_from]"))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[words_to]=")),
-                                              filters.indexOf("&", filters.indexOf("[words_to]="))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[date_from]=")),
-                                              filters.indexOf("&", filters.indexOf("[date_from]="))), "");
-      filters = filters.replace(filters.slice(filters.lastIndexOf("&", filters.indexOf("[date_to]=")),
-                                              filters.indexOf("&", filters.indexOf("[date_to]="))), "");
-      filters = filters.replace(/\u0026work/g, "&bookmark");
-      filters = filters.replace(/\u0026include\u005Fwork/g, "&include_bookmark");
-      filters = filters.replace(/\u0026exclude\u005Fwork/g, "&exclude_bookmark");
-    /* Make the filters blank if it's not a page this bookmarklet was designed for */
-    } else {
-      filters = "";
-    }
-    if (filters) {
-      /* Check if the page already has some filters applied */
-      if (currentUrl.includes("tag_id=") ||
-          currentUrl.includes("user_id=") ||
-          currentUrl.includes("collection_id=")) {
-        /* Separate each saved filter setting into its own bit */
-        var settings = filters.split("&");
-        /* Keep track of the URL for the listing with the saved filters applied on top */
-        var filteredUrl = currentUrl;
-        /* Check each individual saved filter setting */
-        for (let selected of settings) {
-          /* Check if this is a saved filter setting that was actually defined */
-          if (!selected.endsWith("=")) {
-            /* Copy the setting category without the value */
-            var category = selected.slice(0, selected.indexOf("=") + 1);
-            /* Check if the specific saved filter setting was already applied */
-            if (!filteredUrl.includes(selected)) {
-              if (filteredUrl.includes(category + "&") ||
-                  category.includes("sort_column")) {
-                /* Overwrite empty settings with saved filters,
-                or the Sort by direction with the saved one */
-                filteredUrl = filteredUrl.replace(filteredUrl.slice(filteredUrl.indexOf(category),
-                                                                    filteredUrl.indexOf("&", filteredUrl.indexOf(category))),
-                                                  selected);
-              } else if (category.includes("_tag_names")) {
-                /* Insert saved Other tags to include/exclude */
-                filteredUrl = filteredUrl.replace(category, selected + "%2C");
-              } else if (category.includes("query")) {
-                /* Insert anything saved for the Search within results fields */
-                filteredUrl = filteredUrl.replace(category, selected + "+");
-              } else if (category!="utf8=" &&
-                         category!="commit=" &&
-                         !(category.startsWith("include_") && category.includes("rating_ids")) &&
-                         !category.includes("language_id")) {
-                /* Make sure it's not one of the things where only one option can be selected
-                before adding this saved filter setting */
-                filteredUrl = filteredUrl + "&" + selected;
-              }
+    /** Check if text (an URL) was inserted above to base the saved filters on
+     *  before turning them into something easier to use in code
+     */
+    const filterParams = new URL(urlWithFilters).searchParams;
+    const page = window.location.pathname.slice(0, -1).split("/").pop().replace("s", "");
+    if (window.location.hostname == "archiveofourown.org" &&
+    (page == "work" || page == "bookmark")) {
+      /** Check if current page is an AO3 works/bookmarks listing
+       *  and grab any filters that are already active, if there are any
+       */
+      const filters = new URLSearchParams(window.location.search);
+      for (let [key, value] of filterParams) {
+        /** Go through each saved filter that was set
+         *  and check if it's something that may need to be renamed
+         *  (the same filters use different terms in works and bookmarks)
+         */
+        if (value.length) {
+          if (!key.includes(page) && (key.includes("clude_") || key.includes("lang") ||
+          (key.includes("sort_") && (value == "revised_at" || value == "bookmarkable_date"))
+          (key.includes("_tag") && !key.includes("mark_tag")) ||
+          (key.includes("query") && !key.includes("mark_query")))) {
+            key = key.replace(/(work_search|bookmark_search)/, page + "_search");
+            key = key.includes("bookmarkable_query") ? key.replace("bookmarkable_", "") : key.replace("query", "bookmarkable_query");
+            value = value == "revised_at" ? "bookmarkable_date" : value.replace("bookmarkable_date", "revised_at");
+          }
+          if (!filters.getAll(key).includes(value) && key.includes(page + "_search")) {
+            /** Check that the saved filter being checked wasn't active already
+             *  and can be applied to the current page
+             */
+            if (filters.get(key) == null || filters.get(key) == "" ||
+            ((key.includes("rec") || key.includes("_notes")) && filters.get(key) == 0) ||
+            (key.includes("sort_") && (filters.get(key) == "revised_at" ||
+            (key.includes("mark_") && filters.get(key) == "created_at")))) {
+              /** Set the saved filter option
+               *  if it was still empty/using the archive default */
+              filters.set(key, value);
+            } else if (!(key.startsWith(page) || (key.startsWith("include_") && key.includes("rating_ids")))) {
+              /** Add a tag from the saved filters */
+              filters.append(key, value);
+            } else if (key.includes("_tag_names")) {
+              /** Connect tags in a Other tags to in/exlude kind of field */
+              filters.set(key, filters.get(key) + "," + value);
+            } else if (key.includes("query")) {
+              /** Add what was saved in a Search within results kind of field
+               *  (The saved stuff gets tacked on after a space " ",
+               *   which works as an AND on AO3;
+               *   could probably be set to two pipes "||" instead
+               *   for OR in search)
+               */
+              filters.set(key, filters.get(key) + " " + value);
             }
           }
         }
-        /* Finally, go to the listing with all the saved filters applied on top */
-        window.location = filteredUrl;
-      } else if (currentUrl.includes("/tags/")) {
-        /* What to do on unfiltered listings of a tag */
-        window.location = "https://archiveofourown.org/" + currentUrl.split("/").splice(5, 1) + "?" +
-          filters + "&tag_id=" + currentUrl.split("/").splice(4, 1);
-      } else if (currentUrl.includes("/users/")) {
-        if (currentUrl.includes("/pseuds/")) {
-          /* What to do on unfiltered listings of a user's pseud */
-          window.location = "https://archiveofourown.org/" + currentUrl.split("/").splice(7, 1) + "?" +
-            filters + "&user_id=" + currentUrl.split("/").splice(4, 1) +
-            "&pseud_id=" + currentUrl.split("/").splice(6, 1);
-        } else {
-          /* still a user's listing, but no pseud */
-          window.location = "https://archiveofourown.org/" + currentUrl.split("/").splice(5, 1) + "?" +
-            filters + "&user_id=" + currentUrl.split("/").splice(4, 1);
-        }
-      } else if (currentUrl.includes("/collections/")) {
-        /* how to deal with listings in collections */
-        window.location = currentUrl + "?" + filters;
+      }
+      /** Move on to the listing with the saved filters
+       *  if they weren't all active already
+       */
+      if ("?" + filters-toString() != window.location.search) {
+        window.location.search = filters.toString();
       }
     }
   }
