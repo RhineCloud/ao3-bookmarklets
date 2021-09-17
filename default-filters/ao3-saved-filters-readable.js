@@ -71,36 +71,3 @@ javascript: (function() {
     }
   }
 })();
-
-/** extra notes on "key"s:
- * - in any _search:
- *   - include/exclude_: tags are presented using their id number
- *     - rating_ids: include filter can only be set to one value
- *     - warning_ids
- *     - category_ids
- *     - fandom_ids
- *     - character_ids
- *     - relationship_ids
- *     - freeform_ids
- *   - other:
- *     - sort_column:
- *       - work_ values: REVISED_AT, authors/title_to_sort_on, created_at, word/kudos/comments/bookmarks_count, hits
- *       - bookmark_ values: CREATED_AT, bookmarkable_date
- *       - both revised_at and bookmarkable_date list most recently updated works first
- *     - other_tag_names/excluded_tag_names: different tags are separated with a comma ","
- *     - query/bookmarkable_query: use space " " as and AND operator
- *     - language_id
- * - work_ exclusive:
- *   - crossover
- *   - complete
- *   - words_from/to
- *   - date_from/to
- * - bookmark_ exclusive:
- *   - other_bookmark_tag_names/excluded_bookmark_tag_names
- *   - bookmark_query
- *   - rec/with_notes: set to 0 by default rather than empty/null
- * - other:
- *   - utf8
- *   - commit
- *   - tag/user/collection_id
- */
