@@ -1,6 +1,8 @@
 # bookmarklet to set up and apply default filters
 this bookmarklet aims to make it easier to apply a pre-defined/saved set of filters to any works or bookmarks listing page on ao3, in a way that works both on mobile and desktop
 
+there's also [a more detailed guide with less technical stuff on ao3](https://archiveofourown.org/works/33825019) and [a series of tumblr posts with screenshots taken in chrome on android](https://rheincloud.tumblr.com/tagged/saved-filters-on-ao3)
+
 ## how to install
 1. visit any of AO3's works or bookmarks listing page, like [the DCU bookmarks listing page](https://archiveofourown.org/tags/DCU/bookmarks) or [the works listing page of Yuletide 2020](https://archiveofourown.org/collections/yuletide2020/works); you can recognise those pages by their big heading that begins with something like "1 - 20 of 235 Works" in addition to the existence of the filters bar
 2. if you're using a narrow screen, such as vertical/portrait mode on mobile devices, select the _Filters_ button to summon the filters bar
