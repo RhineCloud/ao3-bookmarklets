@@ -65,7 +65,7 @@ javascript: (function() {
       /** Move on to the listing with the saved filters
        *  if they weren't all active already
        */
-      if ("?" + filters-toString() != window.location.search) {
+      if ("?" + filters.toString() != window.location.search) {
         window.location.search = filters.toString();
       }
     }
