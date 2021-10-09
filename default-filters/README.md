@@ -60,7 +60,7 @@ this bookmarklet aims to make it easier to apply a pre-defined/saved set of filt
 5. **select that bookmarklet**
 6. watch the magic happen :sparkles:
 
-## how to use on desktop
+## how to use on desktop & iOS Safari
 1. be on **any works or bookmarks listing page** you want to apply the saved filters to
 2. **locate your saved filters bookmarklet**
 3. **select** said bookmarklet
